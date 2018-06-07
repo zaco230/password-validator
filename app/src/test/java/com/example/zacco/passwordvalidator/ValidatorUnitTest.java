@@ -39,4 +39,10 @@ public class ValidatorUnitTest {
     {
         assertEquals(5, validator.validate());
     }
+    @Test
+    public void passwordFails()
+    {
+        validator.setPassword("password");
+        assertEquals(1, validator.validate());
+    }
 }

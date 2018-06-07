@@ -8,36 +8,33 @@ public class Validator {
     {
         password = s;
     }
+
     public String getPassword()
     {
         return password;
     }
+
     public int validate() {
-        if (password.equalsIgnoreCase("password")) //check if the string is "password"
-        {
+
+        //check if the string is "password"
+        if (password.equalsIgnoreCase("password"))
             pass--;
-            System.out.println("Invalid password. Cannot be \"password\"");
-        }
-        if (password.length() < 8) //check if the length of the string is less than 8 characters long
-        {
+        //check if the length of the string is less than 8 characters long
+        if (password.length() < 8)
             pass--;
-            System.out.println("Invalid password. Must contain at least 8 characters.");
-        }
-        if (password.equals(password.toLowerCase()) && password.equals(password.toUpperCase())) //check string for upper-case and lower-case character
-        {
+        //check if the length of the string is greater than 15 characters long
+        if (password.length() > 15)
+            pass++;
+        //check string for upper-case and lower-case character
+        if (password.equals(password.toLowerCase()) || password.equals(password.toUpperCase()))
             pass--;
-            System.out.println("Invalid password. Must contain at least one upper-case and one lower-case character.");
-        }
-        if (!password.matches(".*\\d.*")) //check string for at least 1 digit (before or after)
-        {
+        //check string for at least 1 digit (before or after)
+        if (!password.matches(".*\\d.*"))
             pass--;
-            System.out.println("Invalid password. Must contain at least 1 digit.");
-        }
-        if (!password.matches(".*[!@#$%^&*].*")) //check string for a special character (!, @, #, $, %, ^, &, *)
-        {
+        //check string for a special character (!, @, #, $, %, ^, &, *)
+        if (!password.matches(".*[!@#$%^&*].*"))
             pass--;
-            System.out.println("Invalid password. Must contain a special character.");
-        }
+
         return pass;
     }
 }
